@@ -1,4 +1,19 @@
 import datetime as dt
+from bs4 import BeautifulSoup
+from splinter import Browser
+import pandas as pd
+import pymongo
+
+client = pymongo.MongoClient('mongodb://localhost:27017')
+db = client.mars_db
+collection = db.mars
+
+def init_browser():
+    executable_path = {"executable_path": "/Users/ON054440/Downloads/chromedriver"}
+    browser = Browser("chrome", **executable_path, headless=False)
+
+
+
 
 def scrape_all():
 
