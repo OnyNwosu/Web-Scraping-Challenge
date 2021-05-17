@@ -2,7 +2,7 @@ import datetime as dt
 from bs4 import BeautifulSoup
 from splinter import Browser
 import pandas as pd
-import pymongo
+from webdriver_manager.chrome import ChromeDriverManager
 
 client = pymongo.MongoClient('mongodb://localhost:27017')
 db = client.mars_db
@@ -12,7 +12,11 @@ def init_browser():
     executable_path = {"executable_path": "/Users/ON054440/Downloads/chromedriver"}
     browser = Browser("chrome", **executable_path, headless=False)
 
+def scrape():
+    browser = init_browser()
+    collection.drop()
 
+    news_url = 
 
 
 def scrape_all():
