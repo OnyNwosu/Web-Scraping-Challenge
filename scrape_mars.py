@@ -8,15 +8,53 @@ client = pymongo.MongoClient('mongodb://localhost:27017')
 db = client.mars_db
 collection = db.mars
 
+
 def init_browser():
-    executable_path = {"executable_path": "/Users/ON054440/Downloads/chromedriver"}
+    # executable_path = {"executable_path": "/Users/ON054440/Downloads/chromedriver"}
+    executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser("chrome", **executable_path, headless=False)
+
+
+# Visit the mars nasa news site
+url = 'https://redplanetscience.com/'
+browser.visit(url)
+
+# Optional delay for loading the page
+browser.is_element_present_by_css('div.list_text', wait_time=1)
+
+# Convert the browser html to a soup object and then quit the browser
+html = browser.html
+news_soup = soup(html, 'html.parser')
+
+slide_elem = news_soup.select_one('div.list_text')
+
+slide_elem.find('div', class_='content_title')
+
+# Use the parent element to find the first a tag and save it as `news_title`
+news_title = slide_elem.find('div', class_='content_title').get_text()
+news_title
+
+# Use the parent element to find the paragraph text
+news_p = slide_elem.find('div', class_='article_teaser_body').get_text()
+news_p
+
+# JPL Space Images
+
+
+
+
+
+
+
+
+
+
 
 def scrape():
     browser = init_browser()
     collection.drop()
 
-    news_url = 
+    news_url =
 
 
 def scrape_all():
@@ -28,16 +66,16 @@ def scrape_all():
     news_title = 'Testing'
     hemispheres_list_of_dicts = [
         {"title": "Title of Hemisphere Image",
-        "img_url": 'https://linktoimage.png'},
+         "img_url": 'https://linktoimage.png'},
 
         {"title": "Title of Hemisphere Image",
-        "img_url": 'https://linktoimage.png'},
+         "img_url": 'https://linktoimage.png'},
 
         {"title": "Title of Hemisphere Image",
-        "img_url": 'https://linktoimage.png'},
-        
+         "img_url": 'https://linktoimage.png'},
+
         {"title": "Title of Hemisphere Image",
-        "img_url": 'https://linktoimage.png'},
+         "img_url": 'https://linktoimage.png'},
     ]
 
     scraped_data = {
