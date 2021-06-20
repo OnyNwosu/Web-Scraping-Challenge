@@ -69,14 +69,23 @@ df.to_html()
 
 # Hemispeheres
 
-# 1. Use browser to visit the URL 
-url = 'https://marshemispheres.com/'
+def hemisphere(browser):
 
-browser.visit(url)
+# 1. Use browser to visit the URL 
+    url = 'https://marshemispheres.com/'
+    browser.visit(url)
 
 # 2. Create a list to hold the images and titles.
 hemisphere_image_urls = []
 
+# 3. Write code to retrieve the image urls and titles for each hemisphere.
+
+
+# 4. Print the list that holds the dictionary of each image url and title.
+hemisphere_image_urls
+
+# 5. Quit the browser
+browser.quit()
 
 
 
