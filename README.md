@@ -1,5 +1,5 @@
 # Web Scraping Homework - Mission to Mars
-## Here is screenshot of the website that I built using scraped data from 4 different websites. 
+# Here is screenshot of the website that I built using scraped data from 4 different websites. 
 
 ![mission_to_mars](Images/Onuwas_screenshot.png)
 
