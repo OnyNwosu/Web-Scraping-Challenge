@@ -58,6 +58,33 @@ def scrape_all():
     df.columns=['Description', 'Mars', 'Earth']
     df.set_index('Description', inplace=True)
     mars_facts = df.to_html()
+
+    # 1. Use browser to visit the URL 
+    url = 'https://marshemispheres.com/'
+
+    browser.visit(url)
+    hemispheressoup = soup(browser.html, 'html.parser')
+    hemitems = hemispheressoup.find_all("div", class_="item")
+
+    # 2. Create a list to hold the images and titles.
+    hemisphere_image_urls = []
+
+    # 3. Write code to retrieve the image urls and titles for each hemisphere.
+    for hemitem in hemitems:
+        hemidict = {}
+        # hemitem = hemitems[0]
+        hemidict["title"] = hemitem.find("h3").text 
+        hemilink = hemitem.find("a") ["href"]
+        hemilink = url + hemilink
+        hemisphere_image_urls.append(hemidict)
+
+    # for hemitem in hemisphere_image_urls:
+        browser.visit(hemilink)
+        hemispheressoup = soup(browser.html, 'html.parser')
+        hemitems = hemispheressoup.find("img", class_="wide-image")
+        hemidict["img_url"]= url + hemitems["src"]
+
+
     
     hemispheres_list_of_dicts = [
         {"title": "Title of Hemisphere Image",
