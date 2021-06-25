@@ -1,5 +1,5 @@
 import datetime as dt
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as soup 
 from splinter import Browser
 import pandas as pd
 from webdriver_manager.chrome import ChromeDriverManager
@@ -24,15 +24,12 @@ def scrape_all():
 
     slide_elem = news_soup.select_one('div.list_text')
 
-    slide_elem.find('div', class_='content_title')
 
     # Use the parent element to find the first a tag and save it as `news_title`
     news_title = slide_elem.find('div', class_='content_title').get_text()
-    news_title
 
     # Use the parent element to find the paragraph text
-    news_p = slide_elem.find('div', class_='article_teaser_body').get_text()
-    news_p
+    news_paragraph = slide_elem.find('div', class_='article_teaser_body').get_text()
 
     # JPL Space Images
 
@@ -52,7 +49,7 @@ def scrape_all():
     img_url_rel = img_soup.find('img', class_='fancybox-image').get('src')
 
     # Use the base url to create an absolute url
-    img_url = f'https://spaceimages-mars.com/{img_url_rel}'
+    featured_image = f'https://spaceimages-mars.com/{img_url_rel}'
 
 
     # Mars Facts
@@ -60,24 +57,20 @@ def scrape_all():
     df = pd.read_html('https://galaxyfacts-mars.com')[0]
     df.columns=['Description', 'Mars', 'Earth']
     df.set_index('Description', inplace=True)
-    df.to_html()
-    news_title = 'Testing'
-    news_paragraph = 'Testing'
-    featured_image = 'https://linktoimage.png'
-    mars_facts = 'Testing'
-    news_title = 'Testing'
+    mars_facts = df.to_html()
+    
     hemispheres_list_of_dicts = [
         {"title": "Title of Hemisphere Image",
-         "img_url": 'https://linktoimage.png'},
+         "img_url": 'https://files.thefacecdn.com/images/_1200x630_crop_center-center_82_none/Bubbles_in_space.jpg?mtime=1612381004'},
 
         {"title": "Title of Hemisphere Image",
-         "img_url": 'https://linktoimage.png'},
+         "img_url": 'https://files.thefacecdn.com/images/_1200x630_crop_center-center_82_none/Bubbles_in_space.jpg?mtime=1612381004'},
 
         {"title": "Title of Hemisphere Image",
-         "img_url": 'https://linktoimage.png'},
+         "img_url": 'https://files.thefacecdn.com/images/_1200x630_crop_center-center_82_none/Bubbles_in_space.jpg?mtime=1612381004'},
 
         {"title": "Title of Hemisphere Image",
-         "img_url": 'https://linktoimage.png'},
+         "img_url": 'https://files.thefacecdn.com/images/_1200x630_crop_center-center_82_none/Bubbles_in_space.jpg?mtime=1612381004'},
     ]
 
     scraped_data = {
