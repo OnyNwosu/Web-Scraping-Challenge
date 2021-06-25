@@ -85,27 +85,12 @@ def scrape_all():
         hemidict["img_url"]= url + hemitems["src"]
 
 
-    
-    hemispheres_list_of_dicts = [
-        {"title": "Title of Hemisphere Image",
-         "img_url": 'https://files.thefacecdn.com/images/_1200x630_crop_center-center_82_none/Bubbles_in_space.jpg?mtime=1612381004'},
-
-        {"title": "Title of Hemisphere Image",
-         "img_url": 'https://files.thefacecdn.com/images/_1200x630_crop_center-center_82_none/Bubbles_in_space.jpg?mtime=1612381004'},
-
-        {"title": "Title of Hemisphere Image",
-         "img_url": 'https://files.thefacecdn.com/images/_1200x630_crop_center-center_82_none/Bubbles_in_space.jpg?mtime=1612381004'},
-
-        {"title": "Title of Hemisphere Image",
-         "img_url": 'https://files.thefacecdn.com/images/_1200x630_crop_center-center_82_none/Bubbles_in_space.jpg?mtime=1612381004'},
-    ]
-
     scraped_data = {
         "news_title": news_title,
         "news_paragraph": news_paragraph,
         "featured_image": featured_image,
         "facts": mars_facts,
-        "hemispheres": hemispheres_list_of_dicts,
+        "hemispheres": hemisphere_image_urls,
         "last_modified": dt.datetime.now()
     }
 
